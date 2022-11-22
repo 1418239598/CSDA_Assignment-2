@@ -75,6 +75,14 @@ public class Controller implements Initializable {
             textAreaCircle.appendText(operation);
             textAreaLine.clear();
             textAreaLine.appendText("Waiting for your next opponent......");
+            frozen = true;
+            operation = null;
+          } else if (operation.equals("Server broken")) {
+            textAreaCircle.clear();
+            textAreaCircle.appendText(operation);
+            textAreaLine.clear();
+            textAreaLine.appendText("See you next time.\n Good luck!");
+            frozen = true;
             operation = null;
           } else if (operation.split(",")[0].equals("1")) {
             textAreaCircle.clear();

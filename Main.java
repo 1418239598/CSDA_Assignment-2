@@ -1,10 +1,12 @@
 package application;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  * . description:
@@ -25,6 +27,15 @@ public class Main extends Application {
       primaryStage.setScene(new Scene(root));
       primaryStage.setResizable(false);
       primaryStage.show();
+
+      primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+        @Override
+        public void handle(WindowEvent event) {
+          System.out.print("监听到窗口关闭");
+          Client.ps.println("disappear");
+        }
+      });
+
     } catch (Exception e) {
       e.printStackTrace();
     }

@@ -31,6 +31,7 @@ public class Server {
         clients.add(new player(socket));
         for (int i = 0; i < clients.size() - 1; i++) {
           if (clients.get(i).inGame.equals("Waiting")) {
+            Thread.sleep(500);
             games.add(new Game(clients.get(i), clients.get(clients.size() - 1), gameID++));
             games.get(games.size() - 1).Start();
             break;

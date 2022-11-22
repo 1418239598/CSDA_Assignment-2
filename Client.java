@@ -15,9 +15,9 @@ import java.util.Scanner;
 
 public class Client {
 
-  static Socket socket;
-  static PrintStream ps;
-  static BufferedReader br;
+  public static Socket socket;
+  public static PrintStream ps;
+  public static BufferedReader br;
   public static MyThread t;
 
   public static Thread getT() {
@@ -79,7 +79,8 @@ class MyThread extends Thread {
         }
       }
     } catch (Exception e) {
-      e.printStackTrace();
+      //      e.printStackTrace();
+      Controller.operation = "Server broken";
     }
   }
 

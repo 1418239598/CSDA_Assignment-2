@@ -26,6 +26,7 @@ public class Game {
   player player2;
   PrintStream ps1;
   PrintStream ps2;
+
   /**
    * . description:
    *
@@ -39,6 +40,7 @@ public class Game {
     player2.inGame = "in Game";
     this.name = name;
   }
+
   /**
    * . description:
    *
@@ -96,6 +98,20 @@ class talk_to_client implements Runnable {
         if (line.equals("0")) {
           ps.println("reset");
           continue;
+        } else if (line.equals("disappear")) {
+          if (otherplayer.inGame.equals("in Game")) {
+            otherplayer.inGame = "Waiting";
+          }
+          try {
+            new PrintStream(otherplayer.socket.getOutputStream(), true).println(
+                "Your Opponent Run Away!");
+
+          } catch (IOException ex) {
+            ex.printStackTrace();
+          }
+          System.out.println("有人下线了");
+          System.out.println(clients);
+          break;
         }
         if (line.equals("Cancel your thread!")) {
           for (int i = 0; i < clients.size(); i++) {
